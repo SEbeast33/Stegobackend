@@ -6,3 +6,4 @@ Pillow
 cloudinary 
 stegano
 gunicorn
+requests
