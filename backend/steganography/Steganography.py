@@ -3,6 +3,7 @@ import hashlib
 import cloudinary.uploader
 # import cloudinary.downloader
 import requests
+from datetime import datetime
 import os
 from django.conf import settings
 
@@ -45,11 +46,24 @@ def hide_message_in_image(image_path, message, key):
 	
     encrypted_message = encrypt_message(message, key)
     secret = lsb.hide(image_path, encrypted_message)
-    secret_image_path = 'hidden_image.png'
+
+    timestamp = datetime.now().strftime("%Y%m%d%H%M%S%f")
+    image_name = f"hidden_image_{timestamp}.png"
+
+# Specify the directory where you want to save the images
+    output_directory = "output_images"
+
+# Create the directory if it doesn't exist
+    if not os.path.exists(output_directory):
+      os.makedirs(output_directory)
+
+# Combine the output directory path with the image name to get the full image path
+    secret_image_path = os.path.join(output_directory, image_name)
+    
     secret.save(secret_image_path)
     # Save the image with the hidden message to Cloudinary
  
-    result = cloudinary.uploader.upload(secret_image_path, public_id="hidden_image", overwrite=True)
+    result = cloudinary.uploader.upload(secret_image_path)
     print("Message hidden successfully.")
     # Return the URL of the saved image
     return result['secure_url']
