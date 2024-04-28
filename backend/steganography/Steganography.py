@@ -91,11 +91,11 @@ def extract_message_from_image(image_url, key):
         if decrypted_message:
             print("Decrypted message:", decrypted_message)
         else:
-            print("Invalid key or no message found.")
+            return("Invalid key or no message found.")
 
         return decrypted_message
     else:
-        print("Failed to download the image from the specified URL.")
+        return("Failed to download the image from the specified URL.")
 
 
 

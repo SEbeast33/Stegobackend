@@ -27,7 +27,7 @@ SECRET_KEY = 'ga^*uq=37h+l_f7kkwlea746f+57yb^4b^x-wga*4s^9#_x3mk'
 DEBUG = True
 
 ALLOWED_HOSTS = []
-ALLOWED_HOSTS = ['yourdomain.com', 'www.yourdomain.com', 'stegobackend.onrender.com']
+ALLOWED_HOSTS = ['yourdomain.com', 'www.yourdomain.com', 'stegobackend.onrender.com',"localhost","127.0.0.1"]
 
 
 
